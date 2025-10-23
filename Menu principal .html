@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - Sabores de Moçambique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #D4AF37;
+            --secondary: #006600;
+            --accent: #CC0000;
+            --dark: #1A1A1A;
+            --light: #F5F5F5;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            margin: 10px auto;
+        }
+
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: none;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            padding: 8px 20px;
+            margin: 0 10px 10px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--secondary);
+            color: var(--light);
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-item {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .menu-item h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+        }
+
+        .price {
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0 0.5rem 0.5rem;
+            }
+
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Sabores de <span>Moçambique</span></div>
+                <div class="mobile-menu">☰</div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="sobre.html">Sobre</a></li>
+                        <li><a href="reserva.html">Reserva</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nosso Menu</h2>
+            </div>
+            <div class="menu-categories">
+                <button class="category-btn active" data-category="entradas">Entradas</button>
+                <button class="category-btn" data-category="pratos-principais">Pratos Principais</button>
+                <button class="category-btn" data-category="sobremesas">Sobremesas</button>
+                <button class="category-btn" data-category="bebidas">Bebidas</button>
+            </div>
+            <div class="menu-items">
+                <!-- Entradas -->
+                <div class="menu-item" data-category="entradas">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Matapa">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Matapa</h3>
+                            <span class="price">450 MZN</span>
+                        </div>
+                        <p>Folhas de mandioca cozidas com amendoim, alho e leite de coco, servidas com camarão.</p>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="entradas">
+                    <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Rissóis de Camarão">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Rissóis de Camarão</h3>
+                            <span class="price">350 MZN</span>
+                        </div>
+                        <p>Massa crocante recheada com camarão temperado com piri-piri e coentro.</p>
+                    </div>
+                </div>
+                
+                <!-- Pratos Principais -->
+                <div class="menu-item" data-category="pratos-principais">
+                    <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Galinha à Zambeziana">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Galinha à Zambeziana</h3>
+                            <span class="price">850 MZN</span>
+                        </div>
+                        <p>Frango marinado em limão, alho e piri-piri, grelhado e servido com arroz de coco.</p>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="pratos-principais">
+                    <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Caril de Camarão">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Caril de Camarão</h3>
+                            <span class="price">950 MZN</span>
+                        </div>
+                        <p>Camarões frescos cozidos em molho de caril com leite de coco e especiarias moçambicanas.</p>
+                    </div>
+                </div>
+                <div class="menu-item" data-category="pratos-principais">
+                    <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Feijão com Óleo de Palma">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Feijão com Óleo de Palma</h3>
+                            <span class="price">650 MZN</span>
+                        </div>
+                        <p>Feijão frade cozido com óleo de palma, servido com arroz branco e peixe grelhado.</p>
+                    </div>
+                </div>
+                
+                <!-- Sobremesas -->
+                <div class="menu-item" data-category="sobremesas">
+                    <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Doce de Caju">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Doce de Caju</h3>
+                            <span class="price">300 MZN</span>
+                        </div>
+                        <p>Castanha de caju caramelizada com açúcar e canela, servida com sorvete de baunilha.</p>
+                    </div>
+                </div>
+                
+                <!-- Bebidas -->
+                <div class="menu-item" data-category="bebidas">
+                    <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sumo de Maracujá">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3>Sumo de Maracujá Natural</h3>
+                            <span class="price">180 MZN</span>
+                        </div>
+                        <p>Sumo fresco de maracujá, adoçado naturalmente.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Sabores de Moçambique. Todos os direitos reservados.</p>
+            <p>Nampula, Monapo | +258 85 159 4755</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                this.classList.add('active');
+                
+                const category = this.getAttribute('data-category');
+                document.querySelectorAll('.menu-item').forEach(item => {
+                    if (category === 'entradas' || item.getAttribute('data-category') === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
